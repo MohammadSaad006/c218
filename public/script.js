@@ -8,6 +8,19 @@ var peer = new Peer(undefined, {
 
 const user = prompt("Enter your name");
 
+const MYvideo = document.createElement("video")
+MYvideo.muted=true
+
+let Mystream
+
+navigator.mediaDevices.getUserMedia({video:true,audio:true}).then((stream)=>{Mystream=stream})
+function addVideoStream(video,stream){
+    video.srcObject=stream
+    video.addEventLisner("loadedmetadata",()=>{
+        video.play()
+        $("#video_Grid").append(video)
+    })
+}
 $(function () {
     $("#show_chat").click(function () {
         $(".left-window").css("display", "none")
@@ -33,6 +46,7 @@ $(function () {
             $("#chat_message").val("");
         }
     })
+
 
 })
 
