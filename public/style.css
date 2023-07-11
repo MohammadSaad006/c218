@@ -113,3 +113,6 @@
     display: flex;
   }
 }
+.background_red {
+  background-color: red;
+}

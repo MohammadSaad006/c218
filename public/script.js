@@ -15,7 +15,7 @@ let Mystream
 
 function addVideoStream(video,stream){
     video.srcObject=stream
-    video.addEventLisner("loadedmetadata",()=>{
+    video.addEventListener("loadedmetadata",()=>{
         video.play()
         $("#video_Grid").append(video)
     })
@@ -74,6 +74,37 @@ $(function () {
         }
     })
 
+    $("#mute_button").click(function(){
+        const enabled = Mystream.getAudioTracks()[0].enabled
+        if (enabled){
+            Mystream.getAudioTracks()[0].enabled=false
+            html =`<i class="fas fa-microphone-slash"></i>`
+            $("#mute_button").toggleClass("background_red")
+            $("#mute_button").html(html)
+        }
+        else {
+            Mystream.getAudioTracks()[0].enabled=true
+            html=`<i class="fas fa-microphone"></i>`
+            $("#mute_button").toggleClass("background_red")
+            $("#mute_button").html(html)
+        }
+    })
+
+    $("#stop_video").click(function(){
+        const enabled = Mystream.getvideoTracks()[0].enabled
+        if (enabled){
+            Mystream.getvideoTracks()[0].enabled=false
+            html =`<i class="fas fa-video-slash"></i>`
+            $("#stop_video").toggleClass("background_red")
+            $("#stop_video").html(html)
+        }
+        else {
+            Mystream.getvideoTracks()[0].enabled=true
+            html=`<i class="fas fa-video"></i>`
+            $("#stop_video").toggleClass("background_red")
+            $("#stop_video").html(html)
+        }
+    })
 
 })
 
