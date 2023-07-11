@@ -13,6 +13,14 @@ MYvideo.muted=true
 
 let Mystream
 
+function addVideoStream(video,stream){
+    video.srcObject=stream
+    video.addEventLisner("loadedmetadata",()=>{
+        video.play()
+        $("#video_Grid").append(video)
+    })
+}
+
 navigator.mediaDevices.getUserMedia({video:true,audio:true})
 .then((stream)=>{
     Mystream=stream
@@ -39,13 +47,7 @@ function connectToNewUser(userId,stream){
     })
 }
 
-function addVideoStream(video,stream){
-    video.srcObject=stream
-    video.addEventLisner("loadedmetadata",()=>{
-        video.play()
-        $("#video_Grid").append(video)
-    })
-}
+
 $(function () {
     $("#show_chat").click(function () {
         $(".left-window").css("display", "none")
