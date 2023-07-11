@@ -13,7 +13,32 @@ MYvideo.muted=true
 
 let Mystream
 
-navigator.mediaDevices.getUserMedia({video:true,audio:true}).then((stream)=>{Mystream=stream})
+navigator.mediaDevices.getUserMedia({video:true,audio:true})
+.then((stream)=>{
+    Mystream=stream
+    addVideoStream(MYvideo,stream)
+    socket.on("USER-CONNECTED",(userId)=>{
+        connectToNewUser(userId,stream)
+    })
+    peer.on("call",(call)=>{
+        call.answer(stream)
+        const video = document.createElement("video")
+        call.on("stream",(userVideoStream)=>{
+            addVideoStream(video,userVideoStream)
+        })
+    })
+})
+
+function connectToNewUser(userId,stream){
+    const call = peer.call(userId,stream)
+    const video = document.createElement("video")
+
+    call.on("stream",(userVideoStream)=>{
+        addVideoStream(video,userVideoStream)
+
+    })
+}
+
 function addVideoStream(video,stream){
     video.srcObject=stream
     video.addEventLisner("loadedmetadata",()=>{
