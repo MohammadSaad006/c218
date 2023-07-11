@@ -90,18 +90,17 @@ $(function () {
         }
     })
 
-    $("#stop_video").click(function(){
-        const enabled = Mystream.getvideoTracks()[0].enabled
-        if (enabled){
-            Mystream.getvideoTracks()[0].enabled=false
-            html =`<i class="fas fa-video-slash"></i>`
-            $("#stop_video").toggleClass("background_red")
+    $("#stop_video").click(function() {
+        const enabled = Mystream.getVideoTracks()[0].enabled;
+        if (enabled) {
+            Mystream.getVideoTracks()[0].enabled = false;
+            html = `<i class="fas fa-video-slash"></i>`;
+            $("#stop_video").toggleClass("background_red");
             $("#stop_video").html(html)
-        }
-        else {
-            Mystream.getvideoTracks()[0].enabled=true
-            html=`<i class="fas fa-video"></i>`
-            $("#stop_video").toggleClass("background_red")
+        } else {
+            Mystreamtream.getVideoTracks()[0].enabled = true;
+            html = `<i class="fas fa-video"></i>`;
+            $("#stop_video").toggleClass("background_red");
             $("#stop_video").html(html)
         }
     })
