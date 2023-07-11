@@ -98,7 +98,7 @@ $(function () {
             $("#stop_video").toggleClass("background_red");
             $("#stop_video").html(html)
         } else {
-            Mystreamtream.getVideoTracks()[0].enabled = true;
+            Mystream.getVideoTracks()[0].enabled = true;
             html = `<i class="fas fa-video"></i>`;
             $("#stop_video").toggleClass("background_red");
             $("#stop_video").html(html)
