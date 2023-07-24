@@ -105,6 +105,25 @@ $(function () {
         }
     })
 
+    $("#invite").click(function(){
+        const to = prompt("TYPE YOUR FRIEND'S EMAIL") 
+        let data = {url:window.location.href,to:to}
+
+        $.ajax({
+            url:"/send-email",
+            type:"post",
+            data:JSON.stringify(data),
+            dataType:"json",
+            contentType:"application/json",
+            sucess:function(result){
+                alert("INVITE SENT.....")
+            },
+            error:function(result){
+                console.log(result.responseJSON)
+            }
+        })
+    })
+
 })
 
 peer.on("open", (id) => {
