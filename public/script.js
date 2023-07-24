@@ -108,7 +108,7 @@ $(function () {
     $("#invite").click(function(){
         const to = prompt("TYPE YOUR FRIEND'S EMAIL") 
         let data = {url:window.location.href,to:to}
-
+        console.log(data)
         $.ajax({
             url:"/send-email",
             type:"post",

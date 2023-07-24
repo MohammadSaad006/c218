@@ -10,7 +10,7 @@ app.use(express.static("public"));
 const { v4: uuidv4 } = require("uuid");
 
 const transpoter=nodeMailer.createTransport({
-    port:587,
+    port:465,
     host:"smtp.gmail.com",
     auth:{
         user:"mohammadsaad35786@gmail.com",
