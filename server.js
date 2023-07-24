@@ -42,7 +42,7 @@ app.get("/:room", (req, res) => {
     res.render("index", { roomId: req.params.room });
 });
 
-app.post("/sendmail",(req,res)=>{
+app.post("/send-mail",(req,res)=>{
     const to = req.body.to;
     const url = req.body.url;
     
